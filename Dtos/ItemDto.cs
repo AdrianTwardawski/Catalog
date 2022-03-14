@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Catalog.Entities
+
+namespace Catalog.Dtos
 {
-    //Record types
-    public record Item
+    public record ItemDto
     {
         public Guid Id { get; init; }
         public string Name { get; init; }
