@@ -1,4 +1,5 @@
-﻿using Catalog.Entities;
+﻿using Catalog.Dtos;
+using Catalog.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,23 @@ namespace Catalog.Repositories
         public Item GetItem(Guid id)
         {
             return items.Where(x => x.Id == id).SingleOrDefault();
+        }
+
+        public void CreateItem(Item item)
+        {
+            items.Add(item);
+        }
+
+        public void UpdateItem(Item item)
+        {
+            var index = items.FindIndex(e => e.Id == item.Id);
+            items[index] = item;
+        }
+
+        public void DeleteItem(Guid id)
+        {
+            var index = items.FindIndex(e => e.Id == id);
+            items.RemoveAt(index);
         }
     }
 }
