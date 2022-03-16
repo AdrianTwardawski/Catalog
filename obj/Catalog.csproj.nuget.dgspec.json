@@ -52,6 +52,18 @@
               "target": "Package",
               "version": "[3.125.5, )"
             },
+            "Kubernetes.DotNet": {
+              "target": "Package",
+              "version": "[1.0.62, )"
+            },
+            "KubernetesClient": {
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Microsoft.ApplicationInsights.Kubernetes": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.11.1, )"
