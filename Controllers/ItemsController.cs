@@ -1,5 +1,4 @@
-﻿using Catalog.Dtos;
-using Catalog.Entities;
+﻿using Catalog.Entities;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Catalog.Dtos;
 
 namespace Catalog.Controllers
 {
@@ -56,6 +56,7 @@ namespace Catalog.Controllers
             {
                 Id = Guid.NewGuid(),
                 Name = itemDto.Name,
+                Description = itemDto.Description,
                 Price = itemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow
             };
@@ -75,13 +76,10 @@ namespace Catalog.Controllers
                 return NotFound();
             }
 
-            Item updatedItem = existingItem with
-            {
-                Name = itemDto.Name,
-                Price = itemDto.Price
-            };
+            existingItem.Name = itemDto.Name;
+            existingItem.Price = itemDto.Price;
 
-            await repository.UpdateItemAsync(updatedItem);
+            await repository.UpdateItemAsync(existingItem);
 
             return NoContent();
         }

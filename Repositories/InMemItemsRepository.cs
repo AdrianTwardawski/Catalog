@@ -1,5 +1,4 @@
-﻿using Catalog.Dtos;
-using Catalog.Entities;
+﻿using Catalog.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
