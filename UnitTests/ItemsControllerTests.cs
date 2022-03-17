@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using static Catalog.Dtos;
@@ -84,32 +85,32 @@ namespace UnitTests
         }
 
 
-        //[Fact]
-        //public async Task GetItemsAsync_WithMatchingItems_ReturnsMatchingItems()
-        //{
-        //    // Arrange
-        //    var allItems = new[]
-        //    {
-        //        new Item(){ Name = "Potion"},
-        //        new Item(){ Name = "Antidote"},
-        //        new Item(){ Name = "Hi-Potion"}
-        //    };
+        [Fact]
+        public async Task GetItemsAsync_WithMatchingItems_ReturnsMatchingItems()
+        {
+            // Arrange
+            var allItems = new[]
+            {
+                new Item(){ Name = "Potion"},
+                new Item(){ Name = "Antidote"},
+                new Item(){ Name = "Hi-Potion"}
+            };
 
-        //    var nameToMatch = "Potion";
+            var nameToMatch = "Potion";
 
-        //    repositoryStub.Setup(repo => repo.GetItemsAsync())
-        //        .ReturnsAsync(allItems);
+            repositoryStub.Setup(repo => repo.GetItemsAsync())
+                .ReturnsAsync(allItems);
 
-        //    var controller = new ItemsController(repositoryStub.Object, loggerStub.Object);
+            var controller = new ItemsController(repositoryStub.Object, loggerStub.Object);
 
-        //    // Act
-        //    IEnumerable<ItemDto> foundItems = await controller.GetItemsAsync(nameToMatch);
+            // Act
+            IEnumerable<ItemDto> foundItems = await controller.GetItemsAsync(nameToMatch);
 
-        //    // Assert
-        //    foundItems.Should().OnlyContain(
-        //        item => item.Name == allItems[0].Name || item.Name == allItems[2].Name
-        //    );
-        //}
+            // Assert
+            foundItems.Should().OnlyContain(
+                item => item.Name == allItems[0].Name || item.Name == allItems[2].Name
+            );
+        }
 
         [Fact]
         public async Task CreateItemAsync_WithItemToCreate_ReturnsCreatedItem()
